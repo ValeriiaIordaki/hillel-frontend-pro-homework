@@ -15,11 +15,11 @@ function replaceAll(inputString, charToFind, charToReplace){
                 charToReplace
             );
         }
-
-        alert('Result: ' + inputString);
     } else{
         alert('Arguments charToFind and charToReplace must have length=1!');
     }
+    return inputString;
 }
 
-replaceAll(78655888, 8, 'f');
+let result = replaceAll(787878787878, 8, 'f');
+alert(result);
