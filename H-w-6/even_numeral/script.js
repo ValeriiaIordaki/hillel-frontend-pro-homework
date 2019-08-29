@@ -1,9 +1,9 @@
 'user strict'
 
 function getArray(){
-	let inputNumber;
-	while(true){
-		inputNumber = prompt('Введите число.');
+    let inputNumber;
+    while(true){
+        inputNumber = prompt('Введите число.');
         if (!isNaN(inputNumber)) break;
     }
 
@@ -11,7 +11,7 @@ function getArray(){
 }
 
 function countEven(inputArray){
-	let count = 0;
+    let count = 0;
     for(let numeral of inputArray) {
         if(numeral % 2 === 0) count++;
     }
@@ -20,7 +20,7 @@ function countEven(inputArray){
 }
 
 function main(){
-	let userArray = getArray();
+    let userArray = getArray();
     let count = countEven(userArray);
     alert('Количество четных цифр: ' + count);
 }
