@@ -1,19 +1,28 @@
 'user strict'
 
-let inputNumber;
-let count = 0;
+function getArray(){
+	let inputNumber;
+	while(true){
+		inputNumber = prompt('Введите число.');
+        if (!isNaN(inputNumber)) break;
+    }
 
-while(true){
-// В целях избежания неправильного ввода числа, например "0000989"
-    inputNumber = +prompt('Введите число.');
-    if (inputNumber) break;
-}
-    
-let inputArray = inputNumber.toString().split('');
-
-for(let numeral of inputArray){
-    if(numeral % 2 === 0) count++;
+    return Number(inputNumber).toString().split('');
 }
 
-alert('Количество четных цифр: ' + count);
+function countEven(inputArray){
+	let count = 0;
+    for(let numeral of inputArray) {
+        if(numeral % 2 === 0) count++;
+    }
 
+    return count;
+}
+
+function main(){
+	let userArray = getArray();
+    let count = countEven(userArray);
+    alert('Количество четных цифр: ' + count);
+}
+
+main();
