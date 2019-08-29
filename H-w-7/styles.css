@@ -1,0 +1,17 @@
+body{
+	font-family: Roboto, sans-serif;
+	text-align: center;
+}
+
+h1#greeting{
+	color: green;
+	font-size: 40px;
+}
+
+div{
+	background: rgba(0, 230, 64, 0.5);
+	height: 30px;
+	width: 150px;
+	font-size: 25px;
+	margin: 10px auto;
+}
