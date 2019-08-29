@@ -8,7 +8,7 @@ function getInputNumber(){
     let userNumber;
     while (true) {
         usersNumber = prompt('Введите число от 0 до 10', '');
-        if (usersNumber && usersNumber <= 10 && usersNumber >= 0) break;
+        if(usersNumber && usersNumber <= 10 && usersNumber >= 0) break;
     }
     
     return userNumber;
@@ -16,7 +16,7 @@ function getInputNumber(){
 
 function playGame(userNumber, randomNumber){
     let balance = 0;
-      if (usersNumber == randomNumber) {
+    if(usersNumber == randomNumber) {
         balance += 100;
         alert('Вы выиграли! Вам начислино 100 грн!');
     } else {
@@ -36,7 +36,7 @@ function main(){
         alert(randomNumber);
         balance += playGame(userNumber, randomNumber);
         continueGame = confirm('Хотите продолжить?');
-    } while (continueGame);
+    } while(continueGame);
 
     alert('Ваш баланс: ' + balance + '! Вы можете забрать свой выиграш.');
 }

@@ -4,7 +4,7 @@ function getArray(){
     let inputNumber;
     while(true){
         inputNumber = prompt('Введите число.');
-        if (!isNaN(inputNumber)) break;
+        if(!isNaN(inputNumber)) break;
     }
 
     return Number(inputNumber).toString().split('');
