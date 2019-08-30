@@ -2,8 +2,10 @@
 
 function getUserName() {
     let name = prompt('What\'s your name?', '');
-
-    (name === '' || name === null || !isNaN(name))? getUserName() : name;
+    
+    if(name === '' || name === null || !isNaN(name)){
+        getUserName()
+    } else{ return name; }
 }
 
 function inputNumbers(){
