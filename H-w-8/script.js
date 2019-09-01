@@ -1,17 +1,12 @@
 'user strict'
 
-const input = document.querySelector('input');
+const input = document.querySelector('input#count');
 const button = document.querySelector('#addBtn');
 const ul = document.querySelector('#list');
 
-input.addEventListener('change', onInputChange);
 button.addEventListener('click', onBtnClick);
 
-function onInputChange(){
-    return +input.value;
-}
-
-function getList(num){
+function createLi(num){
     let newLi;
     for(let index = 1; index <= num; index++){
         newLi = document.createElement('li');
@@ -27,9 +22,9 @@ function removeList(){
 }
 
 function onBtnClick(){
-    let numberOfLi = onInputChange();
+    let listLength = input.value;
     if(ul.innerHTML !== ''){
         removeList()
     }
-   getList(numberOfLi); 
+   createLi(listLength); 
 }
