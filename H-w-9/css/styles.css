@@ -60,11 +60,12 @@
     cursor: pointer;
 	width: 15px;
 	height: 15px;
-    margin-right: 5px;
+    margin: 0 5px;
 }
 
 .noteSelect {
-    background-color: #d6e4aa;
+    border-radius: 7px;
+    background-color: rgba(214, 228, 170, 0.5);
     color: #83b582;
 }
 

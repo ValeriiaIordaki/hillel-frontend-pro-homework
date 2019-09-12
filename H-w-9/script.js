@@ -1,12 +1,12 @@
 'user strict'
 
 const addNoteform = document.querySelector('#addNoteForm');
-let notes = document.querySelector('#notes');
+let notesList = document.querySelector('#notesList');
 const noteInput = document.querySelector('#noteInput');
 const deletNote = document.querySelector('#deletNote').innerHTML;
 
 
-notes.addEventListener('click', onNoteClick);
+notesList.addEventListener('click', onNoteClick);
 addNoteform.addEventListener('submit', onFormAddNoteSubmit);
 
 function onFormAddNoteSubmit(e){
@@ -20,7 +20,7 @@ function onFormAddNoteSubmit(e){
 
 function createNote(node){
     node = creatTag(node);
-    addTag(node, notes);
+    addTag(node, notesList);
 
     getDescriptionNote(node);
 }
