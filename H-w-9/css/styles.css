@@ -1,0 +1,80 @@
+.conteiner{
+	max-width: 500px;
+	min-height: 250px;
+	margin: 50px auto;
+	border-radius: 7px;
+	background: linear-gradient(to right, rgb(98,125,77) 14%, rgb(70,97,48) 31%, 
+        rgb(31,59,8) 54%, rgb(65,94,40) 80%, rgb(78,107,52) 90%); 
+	box-shadow: 4px 4px 3px rgba(98,125,77,1);
+	padding: 20px 30px;
+}
+
+.conteiner p{
+	font: 600 25px/60px sans-serif;
+	text-align: center;
+	color: #ffffff;
+	opacity: 0.5;
+	text-transform: uppercase;
+}
+.conteiner > form{
+	display: flex;
+	align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+.conteiner ul{
+	max-width: 370px;
+    margin: 0 auto;
+
+}
+.conteiner input#noteInput,
+.conteiner button#addNote{
+	border-radius: 5px;
+    border: 1px solid #ffffff;
+    font: 18px/30px sans-serif;
+    opacity: 0.6;
+}
+.conteiner input#noteInput{
+    height: 40px;
+    width: 300px;
+    color: #ffffff;
+    padding: 0 20px
+}
+.conteiner button#addNote{
+    margin-left: 20px;
+    background-color: #ffffff;
+    padding:0 10px;
+    color: rgb(70,97,48);
+}
+.conteiner button#addNote:hover{
+    opacity: 0.9;
+}
+.conteiner button#addNote:active{
+	box-shadow: 0 0 3px #ffffff;
+}
+
+
+.delBtn {
+    display: inline-block;
+    background: url('../img/cancel.png') no-repeat center/contain;
+    cursor: pointer;
+	width: 15px;
+	height: 15px;
+    margin-right: 5px;
+}
+
+.noteSelect {
+    background-color: #d6e4aa;
+    color: #83b582;
+}
+
+.note{
+    cursor: pointer;
+    display: block;
+    font: 600 16px/30px sans-serif;
+    color: #ffffff;
+    max-width: 100%;
+    user-select: none;
+    padding-top: 5px;
+    border-bottom: 1px solid #D6FFB4FF;
+}
