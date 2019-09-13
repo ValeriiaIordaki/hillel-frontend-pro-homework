@@ -12,7 +12,7 @@ addNoteform.addEventListener('submit', onFormAddNoteSubmit);
 function onFormAddNoteSubmit(e){
     e.preventDefault();
 
-    let li;
+    let li = 'li';
     createNote(li);
 
     cleanInput();
@@ -22,11 +22,11 @@ function createNote(node){
     node = creatTag(node);
     addTag(node, notesList);
 
-    getDescriptionNote(node);
+    descriptionNote(node);
 }
 
 function creatTag(tag){
-    tag = document.createElement('tag');
+    tag = document.createElement(tag);
     return tag;
 }
 
@@ -34,7 +34,7 @@ function addTag(tag, parentTag){
     parentTag.appendChild(tag);
 }
 
-function getDescriptionNote(elem){
+function descriptionNote(elem){
     elem.classList.add('note');
     elem.innerHTML = deletNote + noteInput.value;
 }
