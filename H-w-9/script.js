@@ -12,8 +12,8 @@ addNoteform.addEventListener('submit', onFormAddNoteSubmit);
 function onFormAddNoteSubmit(e){
     e.preventDefault();
 
-    let li = 'li';
-    createNote(li);
+
+    createNote('li');
 
     cleanInput();
 }
