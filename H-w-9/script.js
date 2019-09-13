@@ -26,8 +26,7 @@ function createNote(node){
 }
 
 function creatTag(tag){
-    tag = document.createElement(tag);
-    return tag;
+    return tag = document.createElement(tag);
 }
 
 function addTag(tag, parentTag){
