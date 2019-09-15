@@ -12,8 +12,8 @@ addNoteform.addEventListener('submit', onFormAddNoteSubmit);
 function onFormAddNoteSubmit(e){
     e.preventDefault();
 
-
-    createNote('li');
+    let li = 'li';
+    createNote(li);
 
     cleanInput();
 }
@@ -26,8 +26,7 @@ function createNote(node){
 }
 
 function creatTag(tag){
-    tag = document.createElement(tag);
-    return tag;
+    return tag = document.createElement(tag);
 }
 
 function addTag(tag, parentTag){
