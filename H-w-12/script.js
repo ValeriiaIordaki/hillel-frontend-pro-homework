@@ -42,8 +42,8 @@ Hamburger.TOPPING_MAYO = {
 };
 
 //Methods for Hamburger: 
-function addTopping (toppingUser) {
-    this.topping.push(toppingUser);
+function addTopping (topping) {
+    this.topping.push(topping);
 };
 Hamburger.prototype.addTopping = addTopping;
 
