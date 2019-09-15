@@ -17,7 +17,7 @@ Hamburger.SIZE_BIG = {
     calories: 40
 };
 
-// STIFFING
+// STUFFING
 Hamburger.STUFFING_CHEESE = {
     cost: 10,
     calories: 20 
@@ -42,7 +42,7 @@ Hamburger.TOPPING_MAYO = {
 };
 
 //Methods for Hamburger: 
-function addTopping (topping) {
+function addTopping(topping) {
     this.topping.push(topping);
 };
 Hamburger.prototype.addTopping = addTopping;
