@@ -1,11 +1,17 @@
 'use strict'
+const GALLERRY_CONTAINER_CLASS = 'container';
+const BUTTON_NEXT_CLASS = 'bttn-next';
+const BUTTON_PREVIOUS_CLASS = 'bttn-previous';
+const PHOTO_HIDDEN_CLASS = 'photo-hidden';
+const PHOTO_SHOW_CLASS = 'photo-show';
+
+
 class Gallery{
     constructor(elem) {
         this.elem = elem;
         this.interval;
-        this.initializationGallery();
-    }
-    initializationGallery(){
+        this.containerGallery; 
+
         this.creatContainer();
         this.galleryInitialState();
         this.creatButtons(this.containerGallery);
@@ -18,16 +24,16 @@ class Gallery{
         this.containerGallery = containerGallery;
         gallery.before(containerGallery);
         containerGallery.append(gallery);
-        containerGallery.classList.add('container');
+        containerGallery.classList.add(GALLERRY_CONTAINER_CLASS);
     }
     creatButtons(containerParent){
         const buttonNext = document.createElement('button');
         containerParent.append(buttonNext);
-        buttonNext.classList.add('bttn-next');
+        buttonNext.classList.add(BUTTON_NEXT_CLASS);
 
         const buttonPrev = document.createElement('button');
         containerParent.prepend(buttonPrev);
-        buttonPrev.classList.add('bttn-previous');
+        buttonPrev.classList.add(BUTTON_PREVIOUS_CLASS);
     }
 
     scrollGallery(){
@@ -37,30 +43,30 @@ class Gallery{
     galleryInitialState(){
         const arrayPhoto = this.elem.children;
         for(let key of arrayPhoto){
-            key.classList.toggle('photo-hidden');
+            key.classList.toggle(PHOTO_HIDDEN_CLASS);
         }
-        arrayPhoto[0].classList.toggle('photo-shown');
+        arrayPhoto[0].classList.toggle(PHOTO_SHOW_CLASS);
     }
     
     onBtnNextClick(){
-        const activePhoto = document.querySelector('.photo-shown');
+        const activePhoto = document.querySelector('.photo-show');
         const nextPhoto = activePhoto.nextElementSibling;
-        activePhoto.classList.toggle('photo-shown');
+        activePhoto.classList.toggle(PHOTO_SHOW_CLASS);
         if(!nextPhoto){
-            this.elem.firstElementChild.classList.toggle('photo-shown');
+            this.elem.firstElementChild.classList.toggle(PHOTO_SHOW_CLASS);
         } else{
-            nextPhoto.classList.toggle('photo-shown');
+            nextPhoto.classList.toggle(PHOTO_SHOW_CLASS);
         }  
         
     }
     onBtnPrevClick(){
-        const activePhoto = document.querySelector('.photo-shown');
+        const activePhoto = document.querySelector('.photo-show');
         const prevPhoto = activePhoto.previousElementSibling;
-        activePhoto.classList.toggle('photo-shown');
+        activePhoto.classList.toggle(PHOTO_SHOW_CLASS);
         if(!prevPhoto){
-            this.elem.lastElementChild.classList.toggle('photo-shown');
+            this.elem.lastElementChild.classList.toggle(PHOTO_SHOW_CLASS);
         } else{
-            prevPhoto.classList.toggle('photo-shown');
+            prevPhoto.classList.toggle(PHOTO_SHOW_CLASS);
         } 
     }
 
@@ -72,12 +78,12 @@ class Gallery{
         this.elem.parentElement.addEventListener('click',(e)=>{
             const eventElem = e.target;
             switch(true){
-                case eventElem.classList.contains('bttn-next'):
+                case eventElem.classList.contains(BUTTON_NEXT_CLASS):
                     this.onBtnNextClick();
                     this.pauseGallery();
 
                 break
-                case eventElem.classList.contains('bttn-previous'):
+                case eventElem.classList.contains(BUTTON_PREVIOUS_CLASS):
                     this.onBtnPrevClick();
                     this.pauseGallery();
                 break
@@ -87,10 +93,10 @@ class Gallery{
     }
 
     show(num){
-        const activePhoto = document.querySelector('.photo-shown');
-        activePhoto.classList.toggle('photo-shown');
+        const activePhoto = document.querySelector('.photo-show');
+        activePhoto.classList.toggle(PHOTO_SHOW_CLASS);
 
-        this.elem.children[num - 1].classList.toggle('photo-shown');
+        this.elem.children[num - 1].classList.toggle(PHOTO_SHOW_CLASS);
     }
 }
 
