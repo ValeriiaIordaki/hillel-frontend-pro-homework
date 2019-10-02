@@ -11,10 +11,12 @@ class Gallery{
         this.elem = elem;
         this.interval;
         this.containerGallery; 
+        this.onBtnNextClick = this.onBtnNextClick.bind(this);
+        this.elem.classList.add('gallery');
 
         this.creatContainer();
         this.galleryInitialState();
-        this.creatButtons(this.containerGallery);
+        this.addButtn(this.containerGallery);
         this.listenersOfBttns();
         this.scrollGallery();
     }
@@ -22,22 +24,22 @@ class Gallery{
     creatContainer(){
         const containerGallery = document.createElement('div');
         this.containerGallery = containerGallery;
-        gallery.before(containerGallery);
-        containerGallery.append(gallery);
+        this.elem.before(containerGallery);
+        containerGallery.append(this.elem);
         containerGallery.classList.add(GALLERRY_CONTAINER_CLASS);
     }
-    creatButtons(containerParent){
-        const buttonNext = document.createElement('button');
-        containerParent.append(buttonNext);
-        buttonNext.classList.add(BUTTON_NEXT_CLASS);
-
-        const buttonPrev = document.createElement('button');
-        containerParent.prepend(buttonPrev);
-        buttonPrev.classList.add(BUTTON_PREVIOUS_CLASS);
+    creatButton(classBttn){
+        const button = document.createElement('button');
+        button.classList.add(classBttn);
+        return button;
+    }
+    addButtn(containerParent){
+        containerParent.append(this.creatButton(BUTTON_NEXT_CLASS));
+        containerParent.prepend(this.creatButton(BUTTON_PREVIOUS_CLASS));
     }
 
     scrollGallery(){
-        this.interval = setInterval(() => this.onBtnNextClick(), 3000);
+        this.interval = setTimeout(this.onBtnNextClick, 3000);
     }
 
     galleryInitialState(){
@@ -47,11 +49,13 @@ class Gallery{
         }
         arrayPhoto[0].classList.toggle(PHOTO_SHOW_CLASS);
     }
-    
+    get activePhoto(){
+        return document.querySelector('.photo-show');
+    }
     onBtnNextClick(){
-        const activePhoto = document.querySelector('.photo-show');
-        const nextPhoto = activePhoto.nextElementSibling;
-        activePhoto.classList.toggle(PHOTO_SHOW_CLASS);
+        const nextPhoto = this.activePhoto.nextElementSibling;
+        console.log('click');
+        this.activePhoto.classList.toggle(PHOTO_SHOW_CLASS);
         if(!nextPhoto){
             this.elem.firstElementChild.classList.toggle(PHOTO_SHOW_CLASS);
         } else{
@@ -60,9 +64,8 @@ class Gallery{
         
     }
     onBtnPrevClick(){
-        const activePhoto = document.querySelector('.photo-show');
-        const prevPhoto = activePhoto.previousElementSibling;
-        activePhoto.classList.toggle(PHOTO_SHOW_CLASS);
+        const prevPhoto = this.activePhoto.previousElementSibling;
+        this.activePhoto.classList.toggle(PHOTO_SHOW_CLASS);
         if(!prevPhoto){
             this.elem.lastElementChild.classList.toggle(PHOTO_SHOW_CLASS);
         } else{
@@ -75,13 +78,12 @@ class Gallery{
     }  
 
     listenersOfBttns(){
-        this.elem.parentElement.addEventListener('click',(e)=>{
+        this.containerGallery.addEventListener('click',(e)=>{
             const eventElem = e.target;
             switch(true){
                 case eventElem.classList.contains(BUTTON_NEXT_CLASS):
                     this.onBtnNextClick();
                     this.pauseGallery();
-
                 break
                 case eventElem.classList.contains(BUTTON_PREVIOUS_CLASS):
                     this.onBtnPrevClick();
@@ -93,14 +95,13 @@ class Gallery{
     }
 
     show(num){
-        const activePhoto = document.querySelector('.photo-show');
-        activePhoto.classList.toggle(PHOTO_SHOW_CLASS);
+        this.activePhoto.classList.toggle(PHOTO_SHOW_CLASS);
 
         this.elem.children[num - 1].classList.toggle(PHOTO_SHOW_CLASS);
     }
 }
-
-const myGallery = new Gallery(document.getElementById('gallery'));
+const gallery = document.getElementById('gallery');
+const myGallery = new Gallery(gallery);
 // myGallery.show(3);
 // myGallery.onBtnNextClick();// myGallery.next();
 // myGallery.onBtnPrevClick();// myGallery.prev();
