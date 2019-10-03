@@ -1,0 +1,49 @@
+h1{
+    font: bold 30px sans-serif;
+    text-transform: uppercase;
+    background-color: rgba(235, 211, 211, 0.5);
+    color: #BF3030;
+    padding: 20px;
+}
+
+
+.my-tabset .tabset-headings{
+    display: flex;
+    padding: 10px 0 0;
+    box-shadow:  0 2px 1px brown;
+    background-color: rgba(235, 211, 211, 0.5);
+}
+.my-tabset .tabset-headings .tabset-heading{
+    font: 900 18px/25px sans-serif;
+    background-color: white;
+    color: brown;
+    border-right: 1px solid brown;
+    border-top: 1px solid brown;
+    border-radius: 4px 7px 0 0;
+    padding: 5px 25px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.tabset-content{
+    display: none;
+    padding: 20px
+}
+.tabset-content-display{
+    display: block;
+    background-color: rgba(235, 211, 211, 0.2);
+}
+.tabset-heading-active{
+    background-color: brown !important;
+    color: white !important;
+}
+.my-tabset .tabset-content img{
+    float: left;
+    margin-right: 20px;
+    width: 50%;
+}
+.my-tabset .tabset-content p{
+    font: 400 16px/25px sans-serif;
+}
+
+
