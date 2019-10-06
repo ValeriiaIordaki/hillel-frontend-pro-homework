@@ -1,0 +1,40 @@
+.table-contacts{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 18px;
+    margin: 0 auto;
+}
+
+.table-contacts td{
+    border: 1px solid darkgreen;
+    text-align: center;
+    padding: 10px;
+}
+.table-contacts thead,
+.table-contacts tfoot{
+    border: 2px solid darkgreen;
+}
+.table-contacts tfoot td{
+    padding: 0;    
+}
+.table-contacts input{
+    color: indigo;
+    padding: 10px;
+}
+.table-contacts tfoot button{
+    cursor: pointer;
+    width: 100%;
+    padding: 12px;
+    background-color: darkgreen;
+    color: white;
+}
+
+.delBtn {
+    background: url('../img/cancel.png') no-repeat center/contain;
+    cursor: pointer;
+	width: 18px;
+	height: 18px;
+    margin: 0 5px;
+}
+/* .not-corect{
+    border:3px solid red;
+} */
