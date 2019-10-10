@@ -52,6 +52,5 @@ class Gallery{
         const newContextAttrb = tagParent.getAttribute(attrb);
         tagChange.setAttribute(attrb, newContextAttrb);
     }
-
 }
 const galllery = new Gallery();
