@@ -17,13 +17,12 @@ class Gallery{
 
     createGallery(){
         Gallery.prom.then((resp) => { resp.json().then((data) => {
-                const arrayImage = data;
-                this.addImages(arrayImage, Gallery.gallery);
+                this.addImages(data, Gallery.gallery);
             });
         }); 
     }
-    addImages(arr, container){
-        arr.forEach( (elem)=>{
+    addImages(arrImg, container){
+        arrImg.forEach((elem)=>{
             let newImg = Gallery.imgTempl.replace('{{thumbnailUrl}}', elem.thumbnailUrl)
                             .replace('{{title}}', elem.title);
             container.insertAdjacentHTML('beforeend', newImg);
@@ -35,7 +34,7 @@ class Gallery{
         Gallery.darkBackground.addEventListener('click',this.onImgCloseClick);
     }
     onImgClick(e){
-       if( e.target.matches('img')){
+       if( e.target.matches('img')) {
             Gallery.darkBackground.classList.toggle(Gallery.SHOW_FULL_IMG);
         
             Gallery.settingAttribute(Gallery.enlargedImg,'src', e.target);
@@ -44,7 +43,7 @@ class Gallery{
     }
     onImgCloseClick(e){
         if(e.target.matches('#close-img-bttn')|| 
-           e.target.matches('div.container-full-img')){
+           e.target.matches('div.container-full-img')) {
             Gallery.darkBackground.classList.toggle(Gallery.SHOW_FULL_IMG);
         }
     }

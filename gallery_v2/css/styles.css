@@ -3,9 +3,9 @@
     position: relative;
 }
 .container-gallery #gallery{
-    margin: 0 auto;
     display: flex;
     align-items: center;
+    justify-content: center;
     flex-shrink: 0;
     flex-wrap: wrap;
 }
@@ -14,7 +14,7 @@
     margin: 5px; 
 }
 .container-gallery #gallery img:hover{
-    opacity: 1.6;
+    opacity: 0.6;
 }
 
 .container-full-img{
@@ -42,7 +42,7 @@
     height: 30px;
     position: fixed;
     top: 50px;
-    right: calc(50% - 280px) ;
+    right: calc(50% - 280px);
     z-index: 20;
     opacity: 0.5;
     cursor: pointer;
