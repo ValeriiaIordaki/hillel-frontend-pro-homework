@@ -11,7 +11,9 @@ class PhoneDirectory{
     static colectionValueInput = document.querySelectorAll('input');
 
     constructor(elem){
-        this.elem = elem;
+        this.elem = elem;  
+        this.numberOfColumnsTable = this.elem.firstElementChild.firstElementChild.children.length;
+
         this.bindEventListeners();
         this.bindClasses();
     }
@@ -23,13 +25,11 @@ class PhoneDirectory{
         this.elem.classList.add(PhoneDirectory.TABLE_PHONE_DIRECTORY_CLASS);
     } 
     creatInformationCells(perentTag){
-        let numberOfColumnsTable = this.elem.firstElementChild.firstElementChild.children.length;
-
-        for(let i = 0; i < numberOfColumnsTable; i++){
+        for(let i = 0; i < this.numberOfColumnsTable; i++){
             let td = PhoneDirectory.creatElem('td');
             perentTag.appendChild(td);
 
-            if(i === numberOfColumnsTable - 1){
+            if(i === this.numberOfColumnsTable - 1){
                 td.innerHTML = PhoneDirectory.delContact
             }else{
                 td.innerHTML = PhoneDirectory.colectionValueInput[i].value;
