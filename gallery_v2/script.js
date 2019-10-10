@@ -16,7 +16,7 @@ class Gallery{
     }
 
     createGallery(){
-        Gallery.prom.then((resp) => { resp.json().then((data) => {
+        Gallery.prom.then((resp) => {resp.json().then((data) => {
                 this.addImages(data, Gallery.gallery);
             });
         }); 
