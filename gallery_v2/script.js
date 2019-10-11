@@ -1,14 +1,14 @@
 'use strict'
 
 class Gallery{
-    static SHOW_FULL_IMG ='show-full-img';
+    static SHOW_FULL_IMG_CLASS ='show-full-img';
 
     static prom = fetch('https://jsonplaceholder.typicode.com/photos?_limit=50');
     static gallery = document.getElementById('gallery');
     static imgTempl = document.getElementById('imgTemp').innerHTML;
     static closeImgBttn = document.getElementById('close-img-bttn');
     static darkBackground = document.querySelector('.container-full-img');
-    static enlargedImg = document.querySelector('.full-img');function 
+    static enlargedImg = document.querySelector('.full-img'); 
 
     constructor() {
         this.createGallery();
@@ -44,13 +44,13 @@ class Gallery{
     onImgCloseClick(e){
         if(e.target.matches('#close-img-bttn')|| 
            e.target.matches('div.container-full-img')) {
-            Gallery.darkBackground.classList.toggle(Gallery.SHOW_FULL_IMG);
+            Gallery.darkBackground.classList.toggle(Gallery.SHOW_FULL_IMG_CLASSS);
         }
     }
 
-    static settingAttribute(tagChange, attrb, tagParent){
-        const newContextAttrb = tagParent.getAttribute(attrb);
-        tagChange.setAttribute(attrb, newContextAttrb);
+    static settingAttribute(tagChange, attributeName, tagParent){
+        const newContextAttrb = tagParent.getAttribute(attributeName);
+        tagChange.setAttribute(attributeName, newContextAttrb);
     }
 }
 const galllery = new Gallery();
