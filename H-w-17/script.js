@@ -18,10 +18,7 @@ class UsersCatalog{
         .then( resp => resp.json())
         .then((data)=>{
             UsersCatalog.addUsersToList(data);
-        })
-        .then(() => {
-            const firstUserId = UsersCatalog.listUsers.firstElementChild.getAttribute('id');
-            UsersCatalog.fetchUserInfo(firstUserId);
+            UsersCatalog.fetchUserInfo(data[0].id)
         })
         .catch(() => {
             console.error('Error loading.');
