@@ -28,7 +28,7 @@ class StickersBoard{
     bindEventListeners(){
         StickersBoard.stickersFormInput.addEventListener('submit', this.onStickersFormSubmit.bind(this));
         StickersBoard.stickersContainer.addEventListener('input', this.onStickersInputBlur.bind(this));
-        StickersBoard.stickerContainer.addEventListener('mousedown', this.onStickerClick.bind(this));
+        StickersBoard.stickersContainer.addEventListener('mousedown', this.onStickerClick.bind(this));
     }
     onStickersFormSubmit(e){
         e.target.stopPropagation;
