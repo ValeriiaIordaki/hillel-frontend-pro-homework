@@ -16,7 +16,6 @@ class StickersBoard{
     constructor(){
         this.bindEventListeners();
         this.dataStickers = this.getActualData();
-        // this.coordinatesStickers = this.getActualСoordinates();
         this.init();
     }
     init(){
@@ -27,8 +26,8 @@ class StickersBoard{
     
     bindEventListeners(){
         StickersBoard.stickersFormInput.addEventListener('submit', this.onStickersFormSubmit.bind(this));
-        StickersBoard.stickersContainer.addEventListener('input', this.onStickersInputBlur.bind(this));
-        StickersBoard.stickersContainer.addEventListener('mousedown', this.onStickerClick.bind(this));
+        StickersBoard.stickersContainer.addEventListener('focusout', this.onStickersInputBlur.bind(this));
+        StickersBoard.stickersContainer.addEventListener('click', this.onStickerClick.bind(this));
     }
     onStickersFormSubmit(e){
         e.target.stopPropagation;
@@ -52,9 +51,6 @@ class StickersBoard{
             case (e.target.classList.contains(StickersBoard.BTTN_DEL_CLASS)) :
                 this.delElem(e.target);
                 this.resetDataFromLS(e.target);
-                break;
-            case (e.target.classList.contains(StickersBoard.BTTN_MOVE_CLASS)):
-                this.onStickerMousedown(e);
                 break;
         }
     }
@@ -104,45 +100,6 @@ class StickersBoard{
     static getParentContainer(eventElem,css){
         return eventElem.closest(css)
     }
-
-
-    // additional task 
-    onStickerMousedown(e){
-        const sticker = StickersBoard.getParentContainer(e.target,'.sticker-container');
-        sticker.classList.add(StickersBoard.POSITION_ABSOLUTE_CLASS);
-        console.log('rrrrr')
-        this.moveAt(e.pageX, e.pageY, sticker);
-
-        // this.setDataLS('coordinates:', this.coordinatesStickers);
-        e.target.addEventListener('mousemove', this.onMouseMove.bind(this));
-    }
-    moveAt(pageX,pageY,elem){
-        elem.style.top = pageX + 'px';
-        elem.style.left = pageY + 'px';
-    }
-    onMouseMove(e){
-        const sticker = StickersBoard.getParentContainer(e.target,'.sticker-container');
-        console.log('kar')
-        this.moveAt(event.pageX, event.pageY, sticker);
-        e.target.addEventListener('mouseup', this.onMouseUp.bind(this));     
-
-    }
-    onMouseUp(e){
-        console.log('rrrrkar')
-        e.target.removeEventListener('mousemove', this.onMouseMove);
-    }
-    // getActualСoordinates(){
-    //     return this.getDataLS('coordinates:')||[];
-    // }
-    
-    
-    // static getStickersPosition(axisX, axisY){
-    //     return {
-    //         axisX,
-    //         axisY,
-    //     }
-    // }
-    
 }
 
 const stickers = new StickersBoard();
