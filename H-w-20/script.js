@@ -15,9 +15,7 @@ class StickersBoard{
         this.init();
     }
     init(){
-        const arrayData = this.getActualData();
-        arrayData.map(StickersBoard.renderDataSticker);
-        this.setDataLS('stickers:', this.dataStickers);
+        this.dataStickers.map(StickersBoard.renderDataSticker);
     }
     
     bindEventListeners(){
