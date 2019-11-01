@@ -106,9 +106,7 @@ $(function(){
         return JSON.parse(getDataLS('stickers:')) || [];
     }
     function getDataItem(elemId){
-        const selectedSticker = getElemById(elemId);
-        const selectedElemId = getDataAttrb(selectedSticker, DATA_STICKER_ID);
-        return  dataStickers.find(el => el.id == selectedElemId);
+        return  dataStickers.find(el => el.id == elemId);
     }
     function getDataAttrb(elem, nameData){
         return elem.data(nameData);
