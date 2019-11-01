@@ -1,36 +1,30 @@
 'use strict'
 $(function(){
-    const BTTN_DEL_CLASS = 'bttn-delete';
+    const BTTN_DEL_CLASS = '.bttn-delete';
     const DARK_BACKGROUND_CLASS = 'background';
     const STICKER_POSITION_VAL = 'absolute';
+    const DATA_STICKER_ID = 'stickerId'
 
     const $bttnAddSticker = $('#add-sticker');
     const $board = $('#board');
     const $stickerHTML = $('#sticker-temp').html();
     const $stickersContainer = $('#stickers-container');
-    const $modalIcon = $('#modal-icon');
+    const $modalWindow = $('#modal-window');
     const $modalForm = $('#modal-form');
 
     let dataStickers = getActualData();
 
-    const modalIconForCreatingSticker = $modalIcon.dialog({
+    const modalWindowForCreatingSticker = $modalWindow.dialog({
         autoOpen: false,
         modal: true,
         buttons: {
           'Create sticker': function() {
                 addSticker();
-                $modalIcon.dialog( 'close' );
-                $( ".sticker-container" ).draggable({
-                    stop:function( event, ui ){
-                        const el = $(event.target);
-                        getDataItem(el).position = STICKER_POSITION_VAL;
-                        $.extend(getDataItem(el), ui.offset);
-                        setDataLS('stickers:', dataStickers);
-                    }
-                });
+                $modalWindow.dialog( 'close' );
+                draggableItem();
             },
             Cancel: function() {
-                $modalIcon.dialog( 'close' );
+                $modalWindow.dialog( 'close' );
             }
         },
         close: function() {
@@ -45,34 +39,38 @@ $(function(){
         addSticker();
     });
     $bttnAddSticker.click(onBttnAddStickerClick);
-    $stickersContainer.click(onBttnDelStickerClick);
+    $stickersContainer.on('click', BTTN_DEL_CLASS, onBttnDelStickerClick);
 
    function onBttnAddStickerClick(){
-        modalIconForCreatingSticker.dialog('open');
+        modalWindowForCreatingSticker.dialog('open');
     }
     function onBttnDelStickerClick(e){
-        const $el = $(e.target);
+        const deleteItem = $(e.target).closest('.sticker-container');
 
-        if($el.hasClass(BTTN_DEL_CLASS)){
-            delElem($el);
-            removeDataFromLS($el);
-        }
+        const idElem = getDataAttrb(deleteItem, DATA_STICKER_ID);
+        removeDataFromLS(idElem);
+        delElem(idElem);
+        console.log('work!')
     }
     
     init();
     function init(){
-         dataStickers.map(renderDataSticker);
- 
-         $( ".sticker-container" ).draggable({
-             stop:function( event, ui ){
-                 const el = $(event.target);
- 
-                 getDataItem(el).position = STICKER_POSITION_VAL;
-                 $.extend(getDataItem(el), ui.offset);
-                 setDataLS('stickers:', dataStickers);
-             }
-         });
+        dataStickers.map(renderDataSticker);
+        draggableItem();
+         
     } 
+    function draggableItem(){
+        $( ".sticker-container" ).draggable({
+            stop:function( e, ui ){
+                const $draggableElem = $(e.target);
+                const elemId = getDataAttrb($draggableElem, DATA_STICKER_ID);
+
+                getDataItem(elemId).position = STICKER_POSITION_VAL;
+                $.extend(getDataItem(elemId), ui.offset);
+                setDataLS('stickers:', dataStickers);
+            }
+        });
+    }
 
    function addSticker(){
         const arrayDataNewSticker = getObjDataSticker();
@@ -107,23 +105,27 @@ $(function(){
     function getActualData(){
         return JSON.parse(getDataLS('stickers:')) || [];
     }
-    function getDataItem($eventElem){
-        const selectedSticker = getParentContainer($eventElem,'.sticker-container');
-
-        return  dataStickers.find(el => el.id == selectedSticker.data('stickerId'));
+    function getDataItem(elemId){
+        const selectedSticker = getElemById(elemId);
+        const selectedElemId = getDataAttrb(selectedSticker, DATA_STICKER_ID);
+        return  dataStickers.find(el => el.id == selectedElemId);
+    }
+    function getDataAttrb(elem, nameData){
+        return elem.data(nameData);
     }
 
-    function delElem($eventElem){
-        const selectedSticker = getParentContainer($eventElem,'.sticker-container');
-        selectedSticker.remove()
+    function delElem(elemId){
+        const selectedSticker = getElemById(elemId);
+        selectedSticker.remove();
     }
-    function removeDataFromLS(eventElem){
-        const deletedItemData = getDataItem(eventElem);
+    function removeDataFromLS(elemId){
+        const deletedItemData = getDataItem(elemId);
+
         dataStickers = dataStickers.filter(el => el !== deletedItemData);
         setDataLS('stickers:', dataStickers);
     }
-    function getParentContainer($eventElem, css){
-        return $eventElem.closest(css);
+    function getElemById(elemId) {
+        return $(`[data-sticker-id="${elemId}"]`)
     }
 });
    
