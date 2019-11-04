@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/styles.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="script.js" async></script>
+    <title>Search on GitHub</title>
+</head>
+<body>
+    <div id="search-container">
+        <form id="search-form" action="#">
+            <input name="title" id="search" autofocus>
+        </form>
+        <div class="resalts-container"></div>
+    </div>
+
+    <script type="text/template" id="search-results-temp">
+        <div class="search-results-container" data-github-user-id="{{id-github-user}}">
+            <div class="main-info">
+                <img src="{{avatar-user-link}}" alt="Avatar user" class="main-info-avatar-user">
+                <span class="main-info-full-name">{{full-name}}</span>
+                <a href="{{user-profile-url}}" class="main-info-link-profile">({{login}})</a>
+            </div>
+            <div class="additional-info-container">
+                <div class="additional-info">
+                    <span class="additional-info-title">{{repositories number}}</span>
+                    <span class="additional-info-title-name">Repositories</span>
+                </div>  
+        
+                <div class="additional-info">
+                    <span class="additional-info-title">{{followers number}}</span>
+                    <span class="additional-info-title-name">Followers</span>
+                </div>
+        
+                <div class="additional-info">
+                    <span class="additional-info-title">{{date registered}}</span>
+                    <span class="additional-info-title-name">Registered</span>
+                </div>
+            </div>
+        </div>
+    </script>
+</body>
+</html>
