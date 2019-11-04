@@ -2,8 +2,8 @@
 $(function(){
 
     const $searchUserGithub = $('#search');
-    const $resaltsContainer = $('.resalts-container');
-    const $resaultSearchTemp = $('#search-results-temp').html();
+    const $resultsContainer = $('.results-container');
+    const $resultSearchTemp = $('#search-results-temp').html();
     const SEARCH_URL = 'https://api.github.com/search/users?q=';
 
     $searchUserGithub.autocomplete({
@@ -27,7 +27,7 @@ $(function(){
                 url: ui.item.url,
                 dataType: "jsonp",        
                 success: function(data){
-                    const htmlElem = renderDataResalt(data.data);  
+                    const htmlElem = renderDataResult(data.data);  
                     displayOfSearchResult(htmlElem);
                 }
             });      
@@ -41,11 +41,11 @@ $(function(){
     
     
     function displayOfSearchResult(elem) {
-        $resaltsContainer.html(elem);
+        $resultsContainer.html(elem);
     }
 
-    function renderDataResalt(data) { 
-        return $resaultSearchTemp
+    function renderDataResult(data) { 
+        return $resultSearchTemp
             .replace('{{avatar-user-link}}', data.avatar_url)
             .replace('{{full-name}}', data.name || data.login)
             .replace('{{user-profile-url}}', data.html_url)
