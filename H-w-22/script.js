@@ -27,7 +27,7 @@ $(function(){
                 url: ui.item.url,
                 dataType: "jsonp",        
                 success: function(data){
-                    const htmlElem = renderDataResult(data.data);  
+                    const htmlElem = getInfoUserHtml(data.data);  
                     displayOfSearchResult(htmlElem);
                 }
             });      
@@ -44,7 +44,7 @@ $(function(){
         $resultsContainer.html(elem);
     }
 
-    function renderDataResult(data) { 
+    function getInfoUserHtml(data) { 
         return $resultSearchTemp
             .replace('{{avatar-user-link}}', data.avatar_url)
             .replace('{{full-name}}', data.name || data.login)
