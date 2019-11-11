@@ -1,7 +1,7 @@
 {
   "name": "calculator",
   "version": "1.0.0",
-  "description": "Modal for work with calculator",
+  "description": "Module for work with calculator",
   "main": "main.js",
   "scripts": {
     "start": "node main.js",
