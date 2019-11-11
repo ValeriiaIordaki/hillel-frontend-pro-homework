@@ -1,3 +1,4 @@
+@import "reset";
 #board{
     height: 100vh;
     border: 8px solid brown;
@@ -59,4 +60,9 @@
 }
 .bttn-move-sticker{
     font-weight: 700;
+}
+h1{
+    font: 700 30px 'Roboto';
+    margin-bottom: 20px;
+    color: brown;
 }

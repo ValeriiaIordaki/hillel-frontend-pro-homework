@@ -1,9 +1,10 @@
-const{series, src, dest, watch} = require('gulp');
-const concat = require('gulp-concat');
-const sass = require('gulp-sass');
-const inject = require('gulp-inject');
+const {series, src, dest, watch} = require('gulp'),
+concat = require('gulp-concat'),
+sass = require('gulp-sass'),
+inject = require('gulp-inject'),
+rename = require('gulp-rename');
 
-function copyHTML(){
+function copyTask(){
    return  src('src/index.html')
            .pipe(dest('dist/')); 
 }
@@ -15,9 +16,9 @@ function concatJS(){
 }
 
 function compileCSS(){
-   return src(['./src/**/**/reset.scss', './src/**/**/*.scss'])
-          .pipe(concat('style.css'))
+   return src('./src/**/**/main.scss')
           .pipe(sass())
+          .pipe(rename('style.css'))
           .pipe(dest('dist/'));
 }
 
@@ -34,7 +35,7 @@ function injectsLinks(){
 }
 
 function watchFiles() {
-    return watch('./src/*.html', series(copyHTML, injectsLinks)),
+    return watch('./src/*.html', series(copyTask, injectsLinks)),
            watch('./src/**/*.scss', compileCSS),
            watch('./src/**/*.js', concatJS);
 }
