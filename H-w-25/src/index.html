@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task Manager</title>
+</head>
+<body>
+    <div id="todoList" class="todo-list">
+
+    </div>
+    <form action="#" id="newTodoForm">
+        <input type="text" name="title" class="todo-form__input">
+        <button class="todo-form__bttn-add">Save</button>
+    </form>
+
+    <script type="text/template" id="todoItemTemplate">
+        <div data-todo-index="{{id}}" class="todo-item {{isDoneClass}}">
+            {{title}}
+            <span class="delete-bttn">&#65794</span>
+        </div>
+    </script>
+</body>
+</html>
