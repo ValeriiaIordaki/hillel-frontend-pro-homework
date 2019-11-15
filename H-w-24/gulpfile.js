@@ -23,9 +23,9 @@ function compileCSS(){
 }
 
 function injectsLinks(){
-    const target = src('./src/index.html');
-    const sources = src(['./dist/*.js', './dist/*.css'], {read: false});
-    const injectOptions = {
+    const target = src('./src/index.html'),
+    sources = src(['./dist/*.js', './dist/*.css'], {read: false}),
+    injectOptions = {
         addRootSlash: false,
         ignorePath: 'dist/'
    };
@@ -40,5 +40,7 @@ function watchFiles() {
            watch('./src/**/*.js', concatJS);
 }
 
-module.exports.build = series(concatJS, compileCSS, injectsLinks);
-module.exports.dev = watchFiles;
+module.exports= {
+   build : series(concatJS, compileCSS, injectsLinks),
+   dev : watchFiles
+}
