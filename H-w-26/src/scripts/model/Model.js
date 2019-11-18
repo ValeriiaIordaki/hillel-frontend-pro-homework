@@ -5,18 +5,14 @@ export default class Model{
     constructor(data){
         Object.assign(this, data);
     }
-    deleteTodo(data) {
-        Object.assign(this, data); 
-        return this.delete();
+    urlTask(){
+        return config.contactsUrl + `/${this.id}`
     }
-    
-    changeState(data) {
-        Object.assign(this, data);
-        return this.update();
+    save(){
+        return this.id ? this.update() : this.create();
     }
-    
     update(){
-        return fetch(config.todosUrl+`/${this.id}`, {
+        return fetch(`${this.urlTask()}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -24,13 +20,28 @@ export default class Model{
             body: JSON.stringify(this)
         });
     }
+
+    create(){
+        console.log('create')
+    }
     
     delete(){
-        return fetch(config.todosUrl+`/${this.id}`, {
+        return fetch(`${this.urlTask()}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
             }        
         });
     }
+    // deleteTodo(data) {
+    //     Object.assign(this, data); 
+    //     return this.delete();
+    // }
+    
+    toggleState() {
+        this.completed = !this.completed;
+        return this.save();
+    }
+    
+   
 }

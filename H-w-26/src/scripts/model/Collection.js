@@ -13,6 +13,15 @@ export default class TodoCollection{
     }
     setData(data){
         this.todoListItems = data.map((elem ) => new Model(elem));
-        console.log(this.todoListItems)
+        
+    }
+    getModelById(id) {
+        return this.todoListItems.find((item) => item.id == id)
+        
+    }
+    deleteTodo(id){
+        const model = this.getModelById(id);
+        this.todoListItems = this.todoListItems.filter(elem => elem != model);
+        return model.delete();
     }
 }

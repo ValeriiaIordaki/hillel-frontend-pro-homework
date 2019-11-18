@@ -1,39 +1,37 @@
 import $ from 'jquery';
 
 export default class TodoListView{
-    constructor($listContainer, $form, template, config){
-        this.$containerList = $listContainer;
-        this.$form = $form;
-        this.todoItemTemplate = template;
+    constructor(config){
+        this.$containerList= $('#containerTodoList');
         this.config = config;
-        // this.$todoListElement.on('click', '.todo-item', this.onTodoItemClick.bind(this));
-        // this.$todoListElement.on('click', '.delete-btn', this.onDeleteBtnClick.bind(this))
+        this.$containerList.on('click', '.todo-list__item', this.onTodoItemToggle.bind(this));
+        this.$containerList.on('click', '.delete-bttn', this.onDeleteBtnClick.bind(this));
     }
     getElemId($elem) {
         return $elem.data('todoId');
     }
-    
-    onTodoItemClick(e){
-        const id = this.getElemId($(e.target));    
-        this.config.onTodoClick(id);
+    onTodoItemToggle(e){
+        const id = this.getElemId($(e.target));  
+        this.config.onTodoToggle(id);
     }
-    
     onDeleteBtnClick(e) {
         e.stopPropagation();
         this.config.onDelBtnClick(this.getElemId($(e.target).parent()));
     }
+    
+
     renderTodoList(data){	       
         this.$containerList.empty();
         data.forEach(item => this.renderTodo(item));	
     }
     renderTodo(todo) {
         this.$containerList.append(this.getTodoItemHtml(todo))
-        console.log(work)
-      }
+    }
     getTodoItemHtml({id, title, completed}){	
-        return todoItemTemplate	
-                        .replace('{{id}}', id)	
-                        .replace('{{title}}', title)	
-                        .replace('{{isDoneClass}}', completed ? TODO_ITEM_DONE_CLASS : '')	
+        this.$containerList.append(`
+            <div data-todo-id="${id}" class="todo-list__item ${completed? 'done': ''}">
+                <p class="todo-list__item__title">${title}</p>
+                <span class="delete-bttn">&#65794</span>
+            </div>`);	
     }	
 }

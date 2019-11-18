@@ -1,10 +1,13 @@
-.todo-list{
+.todo-list__container{
     padding: 30px 30px 15px;
 }	
 #newTodoForm{
     padding: 0 30px;
 }
-.todo-item {
+.todo-list__item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     padding: 5px 20px;	
     margin: 10px 0;	
     font-size: 20px;
@@ -13,14 +16,12 @@
     border-radius: 5px;
     cursor: pointer;	
     background-color: rgb(223, 223, 172);	
-    max-width: 250px;
     min-height: 30px;
 }	
 .done {	
     background-color: rgb(177, 245, 177);	
 }	
 .delete-bttn{
-    float: right;
     display: flex;
     justify-content: center;
     align-items: center;
