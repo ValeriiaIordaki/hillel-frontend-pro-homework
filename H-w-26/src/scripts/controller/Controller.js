@@ -1,5 +1,3 @@
-// import $ from 'jquery';
-
 import TodoCollection from "../model/Collection";
 import TodoListView from '../view/List';
 
@@ -15,16 +13,15 @@ export default class Controller{
         });
 
         this.renderData = this.renderData.bind(this);
-        this.tyyt()
-    }
-    tyyt(){
         this.collection.fetchServerData().then(this.renderData)
     }
+  
     renderData(){
         this.todoListView.renderTodoList(this.collection.todoListItems)
     }
     onTodoItemToggle(id){
         const model = this.collection.getModelById(id);
+        console.log(model)
         model.toggleState()
             .then(() => this.renderData()); 
     }

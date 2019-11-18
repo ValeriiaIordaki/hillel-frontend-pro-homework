@@ -22,16 +22,15 @@ export default class TodoListView{
 
     renderTodoList(data){	       
         this.$containerList.empty();
-        data.forEach(item => this.renderTodo(item));	
+        data.forEach(item => this. renderTodoItem(item));	
     }
-    renderTodo(todo) {
-        this.$containerList.append(this.getTodoItemHtml(todo))
-    }
-    getTodoItemHtml({id, title, completed}){	
-        this.$containerList.append(`
-            <div data-todo-id="${id}" class="todo-list__item ${completed? 'done': ''}">
+    
+    renderTodoItem({id, title, completed}){	
+        this.$containerList.append(
+            `<div data-todo-id="${id}" class="todo-list__item ${completed? 'done': ''}">
                 <p class="todo-list__item__title">${title}</p>
                 <span class="delete-bttn">&#65794</span>
-            </div>`);	
+            </div>`
+        );	
     }	
 }

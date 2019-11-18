@@ -33,12 +33,8 @@ export default class Model{
             }        
         });
     }
-    // deleteTodo(data) {
-    //     Object.assign(this, data); 
-    //     return this.delete();
-    // }
     
-    toggleState() {
+    toggleState(){
         this.completed = !this.completed;
         return this.save();
     }
