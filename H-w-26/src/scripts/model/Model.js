@@ -8,10 +8,11 @@ export default class Model{
     urlTask(){
         return config.contactsUrl + `/${this.id}`
     }
-    save(){
+
+    saveList(){
         return this.id ? this.update() : this.create();
     }
-    update(){
+    updateList(){
         return fetch(`${this.urlTask()}`, {
             method: 'PUT',
             headers: {
@@ -21,11 +22,11 @@ export default class Model{
         });
     }
 
-    create(){
-        console.log('create')
-    }
+    // create(){
+    //     console.log('create')
+    // }
     
-    delete(){
+    deleteItemList(){
         return fetch(`${this.urlTask()}`, {
             method: 'DELETE',
             headers: {
