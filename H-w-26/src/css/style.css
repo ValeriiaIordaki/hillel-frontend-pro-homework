@@ -1,0 +1,47 @@
+.todo-list{
+    padding: 30px 30px 15px;
+}	
+#newTodoForm{
+    padding: 0 30px;
+}
+.todo-item {
+    padding: 5px 20px;	
+    margin: 10px 0;	
+    font-size: 20px;
+    color: brown;	
+    border: 1px solid #bbb;	
+    border-radius: 5px;
+    cursor: pointer;	
+    background-color: rgb(223, 223, 172);	
+    max-width: 250px;
+    min-height: 30px;
+}	
+.done {	
+    background-color: rgb(177, 245, 177);	
+}	
+.delete-bttn{
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;	
+    color: #ffffff;	
+    font-weight: bold;	
+    background-color: red;
+    border: 1px solid brown	;
+    cursor: pointer;
+} 
+.todo-form__input{
+    border: 1px solid rosybrown;
+    padding: 5px 15px;
+    color: gray;
+    border-radius: 5px;
+}
+.todo-form__bttn-add{
+    padding: 8px 10px;
+    border-radius: 10px;
+    background-color: blanchedalmond;
+    color: brown;
+}
