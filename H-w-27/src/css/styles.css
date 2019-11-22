@@ -52,12 +52,14 @@ body{
 .container-users button:hover{
     border: 2px solid  rgb(52, 121, 80);
 }
-
+form{
+    width: 100%;
+}
 .user-info{
     display: flex;
+    justify-content: space-between;
     height: 100vh;
     background-color:rgba(57, 139, 91, 0.1) ;
-    overflow: auto;
     padding: 25px 30px; 
 }
 .user-info input{
@@ -65,7 +67,7 @@ body{
     border: 1px solid rgb(52, 121, 80);
     border-radius: 4px;
     padding: 10px 5px;
-    margin-bottom:15px; 
+    margin-bottom: 15px; 
     width: 80%;
     color: rgb(57, 139, 102);
 }
@@ -81,7 +83,6 @@ button#add-user{
 }
 .form-button{
     display: flex;
-    flex-direction: column;
 }
 .form-button button{
     background-color: rgb(57, 139, 91);

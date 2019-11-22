@@ -2,7 +2,7 @@ import config from '../config';
 import Model from './Model';
 
 
-export default class CollectionContacts{
+export default class CollectionUsers{
     constructor(){
         this.contactListUsers = [];
     }
@@ -15,19 +15,32 @@ export default class CollectionContacts{
     }
     setData(data){
         this.contactListUsers = data.map((elem ) => new Model(elem));
-        
     }
     getModelById(id) {
-        return this.contactListUsers.find((item) => item.id == id);   
+        return this.contactListUsers.find((elem) => elem.id == id);   
     }
-    deleteContact(id){
+    deleteUser(id){
         const model = this.getModelById(id);
         this.contactListUsers = this.contactListUsers.filter(elem => elem != model);
-        return model.delete();
+        return model.deleteContact();
     }
-    addContact(data){
+    createUser(data){
         const model = new Model(data);
         this.contactListUsers.push(model);
-        return model.saveList();
+        return model.saveContact();
+    }
+    updateUser(data) {
+        this.contactListUsers.forEach(elem => {
+          if (elem.id == data.id) {
+            elem.name = data.name;
+            elem.surname = data.surname;
+            elem.email = data.email;
+            elem.phone = data.phone;
+          }
+        });
+    
+        const model = this.getModelById(data.id);
+            
+        return model.saveContact();
     }
 }

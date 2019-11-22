@@ -12,10 +12,10 @@ export default class Model{
     setData(data){
         Object.assign(this, data);
     }
-    saveList(){
-        return this.id ? this.updateList() : this.createList();
+    saveContact(){
+        return this.id ? this.updateContact() : this.createContact();
     }
-    updateList(){
+    updateContact(){
         return fetch(`${this.urlTask()}`, {
             method: 'PUT',
             headers: {
@@ -24,8 +24,7 @@ export default class Model{
             body: JSON.stringify(this)
         });
     }
-
-    createList(){
+    createContact(){
         return fetch(config.contactsUrl, {
             method: 'POST',
             headers: {
@@ -38,8 +37,7 @@ export default class Model{
             this.setData(data)
         });
     }
-    
-    delete(){
+    deleteContact(){
         return fetch(`${this.urlTask()}`, {
             method: 'DELETE',
             headers: {
