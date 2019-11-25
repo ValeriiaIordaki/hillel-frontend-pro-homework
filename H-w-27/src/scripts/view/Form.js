@@ -5,7 +5,15 @@ export default class InfoForm{
 
     constructor(config){
         this.config = config;
+
         this.$formInfo = this.createForm();
+        this.$bttnDel = this.$formInfo.find('#bttn-delete');
+        this.$name = this.$formInfo.find('#full-name');
+        this.$surname = this.$formInfo.find('#surname');
+        this.$email = this.$formInfo.find('#email');
+        this.$phone = this.$formInfo.find('#phone');
+        this.$idInput = this.$formInfo.find('#id-input');
+
         this.bindEventsListener();
     }
     bindEventsListener(){
@@ -20,7 +28,7 @@ export default class InfoForm{
         this.openFormNewUser();
     }
     onDeleteBtnClick(e) {
-        const id = $('#id-input').val();
+        const id = this.$idInput.val();
         this.config.onDelete(id);
         this.openFormNewUser();
 
@@ -39,7 +47,7 @@ export default class InfoForm{
                     <div class="basic-data">
                         <p>Basic data:</p>
                         <input type="text" name="name" id="full-name" placeholder="Input full name">
-                        <input type="text" name="surname" id="user-name" placeholder="Input user name">
+                        <input type="text" name="surname" id="surname" placeholder="Input user name">
                     </div>
                     <div class="contact-info">
                         <p>Contact info:</p>
@@ -58,21 +66,21 @@ export default class InfoForm{
    
     openFormNewUser(){
         this.resetForm();
-        $('#idInput').val('');
-        $('#bttn-delete').addClass('hidden')
+        this.$idInput.val('');
+        this.$bttnDel.addClass('hidden')
     }
     resetForm(){
         this.$formInfo[0].reset();
     }
     showInfoUser(data){
         this.removeClass();
-        this.$formInfo[0][0].value = data.name;
-        this.$formInfo[0][1].value = data.surname;
-        this.$formInfo[0][2].value = data.email;
-        this.$formInfo[0][3].value = data.phone;
-        this.$formInfo[0][6].value = data.id;
+        this.$name.val(data.name);
+        this.$surname.val(data.surname);
+        this.$email.val(data.email);
+        this.$phone.val(data.phone);
+        this.$idInput.val(data.id);
     }
     removeClass(){
-        $('#bttn-delete').removeClass('hidden');
+        this.$bttnDel.removeClass('hidden');
     }   
 }
