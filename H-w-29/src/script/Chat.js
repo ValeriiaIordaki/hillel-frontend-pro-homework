@@ -25,7 +25,7 @@ export default class Chat{
         }
    
         this.websocket.onclose = () => {
-            this.send('You', 'disconnected', 'Disconnected')
+            this.send(name, 'disconnected', 'Disconnected')
         }
    
         this.websocket.onmessage = (e) => {
