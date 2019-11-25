@@ -4,19 +4,16 @@ import '../assets/reset.css';
 import $ from 'jquery';
 import Chat from './Chat';
 
-const talk = new Chat({
-    onMessage: addLog
-})
-
-
 const $log = $('#log');
 const $input = $('#message');
 const name = 'user';
 
+const talk = new Chat({
+    onMessage: addLog,
+    name
+})
 
 $('#messageForm').on('submit', sendMessage);
-talk.onopen(name);
-
 
 function addLog(message) {
     $log.append(
